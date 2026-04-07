@@ -1,20 +1,24 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Oncure — AI Health Screening",
-  description: "Premium AI-powered health screening platform",
+  title: "Helthr — Family Health Companion",
+  description: "AI-powered family health tracking, lab analysis and doctor coordination",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-[#111318] text-white antialiased min-h-screen">
-        {children}
+      <body className="bg-black text-white antialiased">
+        <div className="mobile-shell">
+          {children}
+        </div>
       </body>
     </html>
   );

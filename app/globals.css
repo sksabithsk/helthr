@@ -1,116 +1,232 @@
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/dm-sans/600.css";
+@import "@fontsource/dm-sans/700.css";
+@import "@fontsource/space-mono/400.css";
+@import "@fontsource/space-mono/700.css";
 @import "tailwindcss";
 
+/* ─── Design Tokens ─── */
 :root {
-  --background: #111318;
-  --foreground: #F0F2F5;
-  --card: #1A1D25;
-  --card-border: #2A2D35;
-  --teal: #00D4B4;
-  --purple: #7C3AED;
-  --amber: #F59E0B;
-  --green: #10B981;
+  /* Backgrounds */
+  --bg-primary: #000000;
+  --bg-card: #0A0908;
+  --bg-elevated: #111111;
+  --bg-input: #0D0B08;
+
+  /* Accent */
+  --accent: #D4A847;
+  --accent-dim: rgba(212,168,71,0.06);
+  --accent-border: rgba(212,168,71,0.15);
+
+  /* Semantic */
+  --green: #4D8B3B;
+  --green-bg: rgba(77,139,59,0.06);
   --red: #EF4444;
-  --blue: #3B82F6;
-  --pink: #EC4899;
+  --red-bg: rgba(239,68,68,0.06);
+  --amber: #F59E0B;
+  --amber-bg: rgba(245,158,11,0.06);
+  --blue: #5A8AC0;
+  --blue-bg: rgba(90,138,192,0.06);
+  --purple: #9A7EC0;
+  --purple-bg: rgba(154,126,192,0.06);
+  --rose: #C07A7A;
+  --rose-bg: rgba(192,122,122,0.06);
+
+  /* Text */
+  --text-primary: #FFFFFF;
+  --text-secondary: #888888;
+  --text-tertiary: #555555;
+  --text-muted: #333333;
+  --text-disabled: #2A2520;
+
+  /* Borders */
+  --border-primary: #1A1710;
+  --border-subtle: #111111;
+
+  /* Radii */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 22px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-}
+/* ─── Base ─── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+html, body {
+  background: #000000;
+  color: #FFFFFF;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
 }
 
-/* Glow effects */
-.glow-teal { box-shadow: 0 0 20px rgba(0, 212, 180, 0.3); }
-.glow-purple { box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
-.glow-amber { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
-.glow-green { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
-.glow-red { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
-
-/* Ring glow animations */
-@keyframes ring-pulse-teal {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(0, 212, 180, 0.6)); }
-  50% { filter: drop-shadow(0 0 12px rgba(0, 212, 180, 0.9)); }
-}
-@keyframes ring-pulse-purple {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.6)); }
-  50% { filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.9)); }
-}
-@keyframes ring-pulse-amber {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6)); }
-  50% { filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.9)); }
-}
-@keyframes ring-pulse-green {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.6)); }
-  50% { filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.9)); }
-}
-@keyframes ring-pulse-red {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.6)); }
-  50% { filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.9)); }
-}
-@keyframes ring-pulse-blue {
-  0%, 100% { filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.6)); }
-  50% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.9)); }
-}
-
-.ring-glow-teal { animation: ring-pulse-teal 2s ease-in-out infinite; }
-.ring-glow-purple { animation: ring-pulse-purple 2s ease-in-out infinite; }
-.ring-glow-amber { animation: ring-pulse-amber 2s ease-in-out infinite; }
-.ring-glow-green { animation: ring-pulse-green 2s ease-in-out infinite; }
-.ring-glow-red { animation: ring-pulse-red 2s ease-in-out infinite; }
-.ring-glow-blue { animation: ring-pulse-blue 2s ease-in-out infinite; }
-
-/* Gradient text */
-.gradient-text-teal {
-  background: linear-gradient(135deg, #00D4B4, #0099FF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Card styles */
-.card {
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  border-radius: 16px;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #2A2D35; border-radius: 4px; }
-
-/* Smooth transitions */
-.transition-all { transition: all 0.2s ease; }
-
-/* Mobile viewport */
-.mobile-container {
+/* ─── Mobile container ─── */
+.mobile-shell {
   max-width: 390px;
   margin: 0 auto;
-  min-height: 100vh;
+  min-height: 100dvh;
+  background: #000000;
   position: relative;
-  background: #111318;
+  overflow-x: hidden;
 }
 
-/* Status bar simulation */
-.status-bar {
+/* ─── Monospace values ─── */
+.mono {
+  font-family: 'Space Mono', monospace !important;
+}
+
+/* ─── Section label ─── */
+.section-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #555555;
+}
+
+/* ─── Card ─── */
+.card {
+  background: #0A0908;
+  border: 0.5px solid #1A1710;
+  border-radius: 16px;
+  padding: 18px;
+}
+
+/* ─── Alert card ─── */
+.alert-card {
+  background: #0A0908;
+  border: 0.5px solid #1A1710;
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+
+/* ─── Progress bar ─── */
+.progress-track {
+  height: 3px;
+  background: #111111;
+  border-radius: 2px;
+  position: relative;
+  overflow: visible;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 2px;
+  position: relative;
+}
+.progress-marker {
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 9px;
+  background: #FFFFFF;
+  border-radius: 2px;
+}
+
+/* ─── Bottom nav ─── */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 390px;
+  background: rgba(0,0,0,0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 0.5px solid #111111;
+  z-index: 100;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 0; height: 0; }
+
+/* ─── Pill/tag ─── */
+.pill {
+  background: #0D0B08;
+  border: 0.5px solid #1A1710;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ─── Score ring animation ─── */
+@keyframes ringFill {
+  from { stroke-dashoffset: var(--full-dash); }
+  to   { stroke-dashoffset: var(--target-offset); }
+}
+.score-ring-fill {
+  animation: ringFill 1.2s ease-out forwards;
+}
+
+/* ─── Count-up ─── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 350ms ease-out forwards; }
+
+/* ─── Stagger helper ─── */
+.stagger-1 { animation-delay: 100ms; }
+.stagger-2 { animation-delay: 200ms; }
+.stagger-3 { animation-delay: 300ms; }
+
+/* ─── Swipe dots ─── */
+.dot-active {
+  width: 18px; height: 3px;
+  background: #D4A847;
+  border-radius: 2px;
+  transition: all 350ms cubic-bezier(0.22,1,0.36,1);
+}
+.dot-inactive {
+  width: 4px; height: 3px;
+  background: #1A1710;
+  border-radius: 2px;
+  transition: all 350ms;
+}
+
+/* ─── Medicine row seamless stack ─── */
+.med-row-first { border-radius: 10px 10px 0 0; }
+.med-row-middle { border-radius: 0; border-top: none; }
+.med-row-last  { border-radius: 0 0 10px 10px; border-top: none; }
+.med-row-only  { border-radius: 10px; }
+
+/* ─── Multicolor progress (gradient) ─── */
+.progress-multicolor {
+  background: linear-gradient(to right, #4D8B3B 0%, #4D8B3B 55%, #F59E0B 55%, #F59E0B 80%, #EF4444 80%, #EF4444 100%);
+}
+
+/* ─── Floating button ─── */
+.fab {
+  position: fixed;
+  bottom: 80px;
+  right: 22px;
+  width: 44px;
   height: 44px;
+  background: #D4A847;
+  border-radius: 14px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.9);
+  justify-content: center;
+  z-index: 90;
+  box-shadow: 0 4px 20px rgba(212,168,71,0.25);
 }
+
+/* ─── Tap active ─── */
+button:active, a:active { opacity: 0.7; }
+
+/* ─── No scrollbar ─── */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ─── pb-safe (iOS home indicator) ─── */
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 8px); }
