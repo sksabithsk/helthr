@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+:root {
+  --background: #111318;
+  --foreground: #F0F2F5;
+  --card: #1A1D25;
+  --card-border: #2A2D35;
+  --teal: #00D4B4;
+  --purple: #7C3AED;
+  --amber: #F59E0B;
+  --green: #10B981;
+  --red: #EF4444;
+  --blue: #3B82F6;
+  --pink: #EC4899;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Glow effects */
+.glow-teal { box-shadow: 0 0 20px rgba(0, 212, 180, 0.3); }
+.glow-purple { box-shadow: 0 0 20px rgba(124, 58, 237, 0.3); }
+.glow-amber { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+.glow-green { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+.glow-red { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); }
+
+/* Ring glow animations */
+@keyframes ring-pulse-teal {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(0, 212, 180, 0.6)); }
+  50% { filter: drop-shadow(0 0 12px rgba(0, 212, 180, 0.9)); }
+}
+@keyframes ring-pulse-purple {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(124, 58, 237, 0.6)); }
+  50% { filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.9)); }
+}
+@keyframes ring-pulse-amber {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.6)); }
+  50% { filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.9)); }
+}
+@keyframes ring-pulse-green {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.6)); }
+  50% { filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.9)); }
+}
+@keyframes ring-pulse-red {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.6)); }
+  50% { filter: drop-shadow(0 0 12px rgba(239, 68, 68, 0.9)); }
+}
+@keyframes ring-pulse-blue {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.6)); }
+  50% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.9)); }
+}
+
+.ring-glow-teal { animation: ring-pulse-teal 2s ease-in-out infinite; }
+.ring-glow-purple { animation: ring-pulse-purple 2s ease-in-out infinite; }
+.ring-glow-amber { animation: ring-pulse-amber 2s ease-in-out infinite; }
+.ring-glow-green { animation: ring-pulse-green 2s ease-in-out infinite; }
+.ring-glow-red { animation: ring-pulse-red 2s ease-in-out infinite; }
+.ring-glow-blue { animation: ring-pulse-blue 2s ease-in-out infinite; }
+
+/* Gradient text */
+.gradient-text-teal {
+  background: linear-gradient(135deg, #00D4B4, #0099FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Card styles */
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #2A2D35; border-radius: 4px; }
+
+/* Smooth transitions */
+.transition-all { transition: all 0.2s ease; }
+
+/* Mobile viewport */
+.mobile-container {
+  max-width: 390px;
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  background: #111318;
+}
+
+/* Status bar simulation */
+.status-bar {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+}
