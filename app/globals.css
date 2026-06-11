@@ -68,6 +68,14 @@ html, body {
   overflow-x: hidden;
 }
 
+/* The Leeds Polymers site is a full-width marketing page, not part of the
+   390px mobile app shell — relax the shell constraints when it's rendered */
+.mobile-shell:has(.leeds-site) {
+  max-width: none;
+  background: #FAF7F2;
+  color: #1C1916;
+}
+
 /* ─── Monospace values ─── */
 .mono {
   font-family: 'Space Mono', monospace !important;
